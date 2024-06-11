@@ -1,0 +1,12 @@
+.Estructura .jumbotron {
+    background-color: blueviolet;
+    color: white;
+}
+
+.Estructura hr {
+    background-color: #ddd;
+}
+
+.Estructura .table td, .table th {
+    vertical-align: middle;
+}

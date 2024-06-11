@@ -1,0 +1,8 @@
+.Counter .jumbotron{
+    background-color: blue;
+    color: white;
+}
+
+.Counter hr {
+    background-color: #ddd;
+}
