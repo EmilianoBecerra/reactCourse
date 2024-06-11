@@ -1,9 +1,9 @@
 import React from 'react';
-import './Atributos.css'
+import './Attribute.css'
 
 
 
-export default class Atributos extends React.Component {
+export default class Attribute extends React.Component {
 
     state = {
         estado1: true,

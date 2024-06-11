@@ -3,9 +3,9 @@ import './App.css'
 import Counter from './components/Counter';
 import { Menssage } from './components/Message';
 import Binding from './components/Binding';
-import Estructura from './components/Estructura';
-import Atributos from './components/Atributos';
-import Formulario from './components/Formulario';
+import Estructure from './components/Estructure';
+import Attribute from './components/Attribute';
+import Form from './components/Form';
 
 
 function MostrarDatosHijos(props) {
@@ -50,10 +50,10 @@ class App extends React.Component {
 
             <hr />
 
-            <Binding titulo={'Binding'}/>
-            <Estructura titulo={'Estructura'}/>
-            <Atributos titulo={'Atributos'}/>
-            <Formulario titulo={'Formulario'}/>
+            <Binding titulo={ 'Binding' }/>
+            <Estructure titulo={ 'Estructura' }/>
+            <Attribute titulo={ 'Atributos' }/>
+            <Form titulo={ 'Formulario' }/>
 
             <button className='btn btn-warning mb-3' onClick={
               () => this.setState(prevstate => ({ valueInitial: prevstate.valueInitial + 1 }))

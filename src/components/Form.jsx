@@ -1,9 +1,9 @@
 import React from 'react';
-import './Formulario.css'
+import './Form.css'
 
 
 
-export default class Formulario extends React.Component {
+export default class Form extends React.Component {
 
     state = {
 

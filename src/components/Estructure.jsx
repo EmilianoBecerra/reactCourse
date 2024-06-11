@@ -1,9 +1,9 @@
 import React from 'react';
-import './Estructura.css'
+import './Estructure.css'
 
 
 
-export default class Estructura extends React.Component {
+export default class Estructure extends React.Component {
 
     state = {
         mostrar: true,
