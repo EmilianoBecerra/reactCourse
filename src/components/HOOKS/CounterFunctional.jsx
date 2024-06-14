@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+/* import { useEffect, useState } from "react"; */
 import './CounterFunctional.css';
-/* import { useLocalStorage } from "../../Hooks/useLocalStorage"; */
+import { useLocalStorage } from "../../Hooks/useLocalStorage";
 
 /* ----------------------------------------------- */
 /*              statefull: con estado              */
 /* ----------------------------------------------- */
 function CounterFunctional(props) {
 
-    const [ counter, setCounter ] = useState(0);
-    //const [ counter, setCounter ] = useLocalStorage('contador', 0)
+    //const [ counter, setCounter ] = useState(0);
+    const [ counter, setCounter ] = useLocalStorage('contador', 0);
     
     return (
         <div className="CounterFunctional">

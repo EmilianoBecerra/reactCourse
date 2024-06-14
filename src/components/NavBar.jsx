@@ -31,6 +31,10 @@ export const NavBar = ()=>
                     <NavLink className="nav-link" to={'/hooks'} > Hooks </NavLink>
                 </li>
 
+                < li className="nav-item" >
+                    <NavLink className="nav-link" to={'/Api'} > Api </NavLink>
+                </li>
+
                 {/* < li className="nav-item" >
                     <NavLink className="nav-link" to={'/no-valida'} > No válida </NavLink>
                 </li> */}

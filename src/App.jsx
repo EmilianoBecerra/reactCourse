@@ -10,6 +10,7 @@ import { NavBar } from './components/NavBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { InvalidRoute } from './components/InvalidRoute';
 import Hooks from './components/HOOKS/Hooks';
+import Api from './components/API/Api';
 
 
 
@@ -60,6 +61,8 @@ class App extends React.Component {
                 <Route path='atributos' element={<Attribute title={ 'Atributos' }/>} />
                 <Route path='formulario' element={<Form title={ 'Formulario' }/>} />
                 <Route path='hooks' element={ <Hooks title={ 'Hooks' }/> }/>
+                <Route path='api' element={ <Api title={ 'Api' }/> }/>
+
                 <Route path='*' element={ <InvalidRoute /> }/>
 
               </Routes>
