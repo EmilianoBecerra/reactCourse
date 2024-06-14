@@ -1,8 +1,13 @@
-.Formulario .jumbotron {
+.Form .jumbotron {
     background-color: navy;
     color: white;
 }
 
-.Formulario hr {
+.Form hr {
     background-color: #ddd;
+}
+
+
+.Form label {
+    text-transform: capitalize;
 }

@@ -7,17 +7,28 @@ export default class Binding extends React.Component {
         mensaje : 'Soy un mensaje',
         valor1: 456,
         valor2: 456,
-        contador: 789
+        contador: 789,
+        timer: 0
+    }
+
+    componentDidMount() {
+        this.refTimer = setInterval(() => {
+            this.setState(prevstate => ({timer: prevstate.timer + 1}));
+        }, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.refTimer);
     }
 
     render() {
         const {titulo} = this.props;
-        const {valor1, valor2, contador} = this.state;
+        const {valor1, valor2, contador, timer} = this.state;
 
         return (
             <div className="Binding">
                 <div className="jumbotron">
-                    <h3>Componente {titulo}</h3>
+                    <h3>Componente {titulo} - {timer}</h3>
                     <hr />
 
                     {/* ------------------------------------------------ */}

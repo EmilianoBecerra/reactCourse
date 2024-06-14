@@ -7,32 +7,23 @@ import './Counter.css';
 
 class Counter extends React.Component {
 
-  // eslint-disable-next-line no-useless-constructor
-  constructor(props) {
-    super(props)
-
-  }
-
   state = {
-    id: this.props.id,
-    contador1: this.props.value1,
-    contador2: this.props.value2,
-    contadorInicial: this.props.valueInitial
+    count1: this.props.ini1,
+    count2: this.props.value2,
+    ini1: this.props.ini1
   }
 
-  enviarDatosAlNivelSuperior() {
-    const { id } = this.state
-    const datos = {
-      id,
-      contador1: this.state.contador1,
-      contador2: this.state.contador2
+  sendDataSuperiorLevel() {
+    const data = {
+      id: this.props.id,
+      count1: this.state.count1,
+      count2: this.state.count2
     }
-    this.props.enviarDatosAlPadre(datos)
+    this.props.sendDataFather(data);
   }
 
-  incrementar(n) {
-    console.log(n)
-    this.setState(prevstate => ({ ['contador' + n]: prevstate['contador' + n] + 1 }), ()=> {this.enviarDatosAlNivelSuperior()});
+  increment(n) {
+    this.setState(prevstate => ({ ['count' + n] : prevstate['count' + n] + 1 }), ()=> { this.sendDataSuperiorLevel() });
   }
 
   /* ----------------------------------------------------------------------------------------- */
@@ -41,17 +32,18 @@ class Counter extends React.Component {
 
   //Indica cuando el componente cargo su vista.
   componentDidMount() {
-    //this.enviarDatosAlNivelSuperior()
+    
   }
 
   //Indica cuando el componente cambio su vista, estado o props
   componentDidUpdate() {
-    const { value1 } = this.props
-    const { contadorInicial } = this.state
+    const { ini1: ini1Props } = this.props;
+    const { ini1: ini1State } = this.state;
 
-    if (value1 !== contadorInicial) {
-      this.setState({ contador1: value1, contadorInicial: value1 })
+    if (ini1Props !== ini1State ) {
+      this.setState({ count1: ini1Props, ini1: ini1Props });
     }
+   
   }
 
   //Incida cuando el componente sera desmontado o destruido
@@ -59,25 +51,26 @@ class Counter extends React.Component {
 
   render() {
     const { id, color } = this.props;
-    const { contador1, contador2 } = this.state;
+    const { count1, count2 } = this.state;
+
 
     return (
       <div className='Counter'>
         <div className="jumbotron" style={{ backgroundColor: color }}>
           <h3> Contador N{id} </h3>
           <hr />
-
-          <h4 className='alert alert-info'> Contador 1: {contador1} </h4>
+          
+          <h4 className='alert alert-info'> Contador 1: {count1} </h4>
           
           <button className='btn btn-success my-3' onClick={
-            () => this.incrementar(1)
+            () => this.increment(1)
           }> Incrementar </button>
-
+          
           <hr />
-          <h4 className='alert alert-info'> Contador 2: {contador2} </h4>
+          <h4 className='alert alert-info'> Contador 2: {count2} </h4>
 
           <button className='btn btn-success my-3' onClick={
-            () => this.incrementar(2)
+            () => this.increment(2)
           }> Incrementar </button>
         </div>
       </div>

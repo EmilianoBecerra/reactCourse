@@ -1,0 +1,8 @@
+.CounterClass .jumbotron {
+    background-color: teal;
+    color: white;
+}
+
+.CounterClass hr {
+    background-color: #ddd;
+}
