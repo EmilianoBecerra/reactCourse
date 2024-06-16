@@ -1,12 +1,12 @@
-.App .jumbotron{
-    background-color: purple;
-    color: white;
+.App .jumbotron {
+  background-color: purple;
+  color: white;
 }
 
 hr {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 .App h4 {
-    margin: 0;
+  margin: 0;
 }

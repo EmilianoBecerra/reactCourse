@@ -1,13 +1,12 @@
 .Form .jumbotron {
-    background-color: navy;
-    color: white;
+  background-color: navy;
+  color: white;
 }
 
 .Form hr {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
-
 .Form label {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
