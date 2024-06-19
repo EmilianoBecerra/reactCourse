@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import "./Api.css";
 import { Table } from "./Table";
-import axios from "axios";
-import Input from "./Input";
-
-const URL_API_PRODUCTS =
-  "https://650af169dfd73d1fab093f01.mockapi.io/api/products/";
+import InputForm from "./InputForm";
+import {
+  createProduct,
+  getProducts,
+  removeProduct,
+  updateProduct,
+} from "./services";
 
 export default function Api(props) {
   const { title } = props;
@@ -22,53 +24,23 @@ export default function Api(props) {
     start();
   }, []);
 
-  async function getProducts() {
-    try {
-      const { data: products } = await axios.get(URL_API_PRODUCTS);
-      return products;
-    } catch (err) {
-      console.log("Error axios get", err.message);
-    }
-  }
-
-  async function createProduct(product) {
-    try {
-      const { data: newProduct } = await axios.post(URL_API_PRODUCTS, product);
-      return newProduct;
-    } catch (err) {
-      console.log("Axios post Err", err.message);
-    }
-  }
-
-  async function updateProduct(id, product) {
-    try {
-      const { data: updatedProduct } = await axios.put(
-        URL_API_PRODUCTS + id,
-        product,
-      );
-      return updatedProduct;
-    } catch (err) {
-      console.log("Axios put Err", err.message);
-    }
-  }
-
-  async function removeProduct(id) {
-    try {
-      const { data: removedProduct } = await axios.delete(
-        URL_API_PRODUCTS + id,
-      );
-      return removedProduct;
-    } catch (err) {
-      console.log("Axios delete Err", err.message);
-    }
+  function formInvalid() {
+    const invalid =
+      !product.name ||
+      !product.price ||
+      !product.stock ||
+      !product.description ||
+      !product.img;
+    return invalid;
   }
 
   async function update(id, product) {
     const updatedProduct = await updateProduct(id, product);
     const productsCopy = [...products];
-    const index = productsCopy.find((p) => p.id === updatedProduct.id);
+    const index = productsCopy.findIndex((p) => p.id === updatedProduct.id);
     productsCopy.splice(index, 1, updatedProduct);
-    setProduct(productsCopy);
+    setProducts(productsCopy);
+    setProduct({ name: "", price: "", stock: "", description: "", img: "" });
   }
 
   async function remove(id) {
@@ -79,8 +51,12 @@ export default function Api(props) {
     setProducts(productsCopy);
   }
 
-  function onsubmit(e) {
+  async function onsubmit(e) {
     e.preventDefault();
+    const createdProduct = await createProduct(product);
+    const productsCopy = [...products];
+    productsCopy.push(createdProduct);
+    setProduct(productsCopy);
     setProduct({ name: "", price: "", stock: "", description: "", img: "" });
   }
 
@@ -97,12 +73,18 @@ export default function Api(props) {
         </h3>
         <hr />
 
-        <Input onsubmit={onsubmit} product={product} onchange={onchange} />
+        <InputForm
+          onsubmit={onsubmit}
+          product={product}
+          onchange={onchange}
+          invalid={formInvalid()}
+        />
 
         <Table
           products={products}
-          update={(id) => update(id)}
-          remove={(id) => remove(id)}
+          update={update}
+          remove={remove}
+          invalid={formInvalid()}
         />
       </div>
     </div>

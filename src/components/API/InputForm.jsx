@@ -1,11 +1,11 @@
-import "./Input.css";
+import "./InputForm.css";
 
-export default function Input(props) {
+export default function InputForm(props) {
   const { name, price, stock, description, img } = props.product;
-  const { onsubmit, onchange } = props;
+  const { onsubmit, onchange, invalid } = props;
 
   return (
-    <div className="Input">
+    <div className="InputForm">
       <form onSubmit={onsubmit}>
         <div className="form-group">
           <label htmlFor="name"> nombre </label>
@@ -14,7 +14,7 @@ export default function Input(props) {
             id="name"
             placeholder="Nombre"
             className="form-control"
-            value={name}
+            value={name ?? ""}
             onChange={onchange}
           />
           <label htmlFor="price"> Precio </label>
@@ -23,7 +23,7 @@ export default function Input(props) {
             id="price"
             placeholder="Precio"
             className="form-control"
-            value={price}
+            value={price ?? ""}
             onChange={onchange}
           />
           <label htmlFor="stock"> stock </label>
@@ -32,7 +32,7 @@ export default function Input(props) {
             id="stock"
             placeholder="Stock"
             className="form-control"
-            value={stock}
+            value={stock ?? ""}
             onChange={onchange}
           />
           <label htmlFor="description"> descripcion </label>
@@ -41,7 +41,7 @@ export default function Input(props) {
             id="description"
             placeholder="Descripcion"
             className="form-control"
-            value={description}
+            value={description ?? ""}
             onChange={onchange}
           />
           <label htmlFor="img"> imagen </label>
@@ -50,12 +50,15 @@ export default function Input(props) {
             id="img"
             placeholder="Imagen"
             className="form-control"
-            value={img}
+            value={img ?? ""}
             onChange={onchange}
           />
         </div>
-
-        <button className="btn btn-success mb-5 mt-3"> Enviar </button>
+        <button className="btn btn-success mt-3" disabled={invalid}>
+          {" "}
+          Guardar{" "}
+        </button>{" "}
+        <p style={{ color: "black" }}>*Todos los datos son necesearios</p>
       </form>
     </div>
   );

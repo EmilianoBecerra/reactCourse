@@ -1,16 +1,19 @@
 import React from "react";
 import "./App.css";
-import Counter from "./components/Counter";
-import { Menssage } from "./components/Message";
-import Binding from "./components/Binding";
-import Estructure from "./components/Estructure";
-import Attribute from "./components/Attribute";
-import Form from "./components/Form";
-import { NavBar } from "./components/NavBar";
+import Counter from "./components/principalComponents/Counter";
+import { Menssage } from "./components/principalComponents/Message";
+import Binding from "./components/principalComponents/Binding";
+import Estructure from "./components/principalComponents/Estructure";
+import Attribute from "./components/principalComponents/Attribute";
+import Form from "./components/principalComponents/Form";
+import { NavBar } from "./components/principalComponents/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { InvalidRoute } from "./components/InvalidRoute";
+import { InvalidRoute } from "./components/principalComponents/InvalidRoute";
 import Hooks from "./components/HOOKS/Hooks";
 import Api from "./components/API/Api";
+import Context from "./components/CONTEXT-API/Context";
+import HocRP from "./components/HOC-RP/HocRP";
+import { CounterRedux } from "./components/REDUX/CounterRedux";
 
 function GetDateChild(props) {
   const { id, count1, count2 } = props.data;
@@ -71,6 +74,12 @@ class App extends React.Component {
                 />
                 <Route path="hooks" element={<Hooks title={"Hooks"} />} />
                 <Route path="api" element={<Api title={"Api"} />} />
+                <Route path="context" element={<Context />} />
+                <Route path="hocrp" element={<HocRP />} />
+                <Route
+                  path="redux"
+                  element={<CounterRedux title={"Redux"} />}
+                />
 
                 <Route path="*" element={<InvalidRoute />} />
               </Routes>
@@ -83,16 +92,13 @@ class App extends React.Component {
             <br />
             <div className="row">
               <div className="col-4">
-                {" "}
-                <Menssage title="Mensaje Nro 1" color="green" />{" "}
+                <Menssage title="Mensaje Nro 1" color="green" />
               </div>
               <div className="col-4">
-                {" "}
-                <Menssage title="Mensaje Nro 2" color="orangered" />{" "}
+                <Menssage title="Mensaje Nro 2" color="orangered" />
               </div>
               <div className="col-4">
-                {" "}
-                <Menssage title="Mensaje Nro 3" color="blueviolet" />{" "}
+                <Menssage title="Mensaje Nro 3" color="blueviolet" />
               </div>
             </div>
             <hr />
@@ -150,10 +156,6 @@ class App extends React.Component {
                 />
               </div>
             </div>
-            <hr />
-            <h2>
-              <u> Otros componentes </u>
-            </h2>
           </div>
         </div>
       </div>

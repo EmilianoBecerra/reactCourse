@@ -1,0 +1,8 @@
+.Notice .jumbotron {
+  background-color: teal;
+  color: white;
+}
+
+.Notice hr {
+  background-color: #ddd;
+}

@@ -1,7 +1,7 @@
 import "./Table.css";
 
 export const Table = (props) => {
-  const { products, update, remove } = props;
+  const { products, update, remove, invalid } = props;
 
   return (
     <div className="Table">
@@ -36,6 +36,7 @@ export const Table = (props) => {
                     <button
                       className=" btn btn-warning mr-3 mb-2 "
                       onClick={() => update(product.id)}
+                      disabled={invalid}
                     >
                       Actualizar
                     </button>
