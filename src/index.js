@@ -9,13 +9,11 @@ import { store } from "./state/1_store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <>
-    {/*  <React.StrictMode> */}
-    <Provider store={store}>
+  <Provider store={store}>
+    <React.StrictMode>
       <App />
-    </Provider>
-    {/* </React.StrictMode> */}
-  </>,
+    </React.StrictMode>
+  </Provider>,
 );
 
-// clase 15 => 1.33.00
+// clase 17 =>

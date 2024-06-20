@@ -1,10 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
-import { accDecrement, middlewareIncrementAsync } from "../../state/2_actions";
+import {
+  accDecrementAsync,
+  accIncrementAsync,
+  seeProductValue,
+} from "../../state/2_actions";
 
 export function CounterRedux(props) {
   const { title } = props;
   const counter = useSelector((state) => state.counter);
   const counter2 = useSelector((state) => state.counter2);
+  const product = useSelector((state) => state.product);
   const dispatch = useDispatch();
   return (
     <div className="CounterRedux">
@@ -18,16 +23,30 @@ export function CounterRedux(props) {
 
         <button
           className="btn btn-danger my-3 mr-3"
-          onClick={() => dispatch(accDecrement(1))}
+          onClick={() => dispatch(accDecrementAsync(4))}
         >
           Decrementar
         </button>
 
         <button
           className="btn btn-success my-3"
-          onClick={() => dispatch(middlewareIncrementAsync(1))}
+          onClick={() => dispatch(accIncrementAsync(3))}
         >
           Incrementar
+        </button>
+
+        <br />
+        <br />
+        <h3>
+          {" "}
+          Valor producto: {product ? product : "Pedir valor producto"}
+        </h3>
+        <button
+        disabled={product === null  ? false : true}
+          className="btn btn-success my-3 "
+          onClick={() => dispatch(seeProductValue())}
+        >
+          Consultar
         </button>
       </div>
     </div>
